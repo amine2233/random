@@ -9,7 +9,9 @@ public func random_uniform(range: Int) -> Int {
     #if os(Linux)
     return Int(random()) % range
     #else
-    return Int(arc4random_uniform(UInt32(range)))
+    let maxRandomRange: UInt32 = range > UInt32.max ? UInt32.max : UInt32(range)
+    let randomRange: UInt32 = range < 0 ? UInt32.min : maxRandomRange
+    return Int(arc4random_uniform(randomRange))
     #endif
 }
 
