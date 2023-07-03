@@ -30,7 +30,7 @@ import Foundation // Only needed for SecRandomCopyBytes, used for random seed ge
 ///
 /// A random generator only have to implement two initializers and the
 /// next() -> UInt64 method.
-public protocol RandomGenerator : class {
+public protocol RandomGenerator: AnyObject {
 
     associatedtype State
 
